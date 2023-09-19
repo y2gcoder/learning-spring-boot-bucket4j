@@ -33,3 +33,13 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+tasks.register('copyDeps', Copy) {
+	from(sourceSets.main.runtimeClasspath)
+	includeEmptyDirs = false
+	into('/opt/app/learning/classes/')
+}
+
+tasks.register('cleanDeps', Delete) {
+	delete '/opt/app/learning/classes/'
+}
